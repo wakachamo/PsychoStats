@@ -42,7 +42,7 @@ define("PS_ROOTDIR", dirname(dirname(__FILE__)));
 
 // enable some sane error reporting (ignore notice errors) and turn off the magic. 
 // we also want to to disable E_STRICT.
-error_reporting(E_ALL ^ E_NOTICE); 
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED); 
 set_magic_quotes_runtime(0);
 /**/
 ini_set('display_errors', 'On');
