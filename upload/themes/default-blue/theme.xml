@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<theme>
+	<name>default-blue</name>
+	<parent>default</parent>
+	<version>1.0</version>
+	<title>Default Theme - blue skin</title>
+	<author email="stormtrooper@psychostats.com">Stormtrooper</author>
+	<website>http://www.psychostats.com/</website>
+	<source>http://updates.psychostats.com/themes/{$name}.xml</source>
+	<image>http://updates.psychostats.com/themes/{$name}.png</image>
+	<file>http://updates.psychostats.com/themes/{$name}.zip</file>
+	<description>blue skin for {$parent} theme.</description>
+</theme>

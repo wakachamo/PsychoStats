@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<theme>
+	<name>acp</name>
+	<parent></parent>
+	<version>1.0</version>
+	<title>Default PsychoStats Administrator Theme</title>
+	<author email="stormtrooper@psychostats.com">Stormtrooper</author>
+	<website>http://www.psychostats.com/</website>
+	<source install='false'>http://www.psychostats.com/updates/acp.xml</source>
+	<file>http://www.psychostats.com/updates/acp.zip</file>
+	<description>This is the PsychoStats Administrator Control Panel (ACP) Theme.</description>
+</theme>

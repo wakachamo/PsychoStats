@@ -1,0 +1,73 @@
+<!--outermost page container for all content-->
+<div id="ps-page-container">
+
+<!--inner container for the content-->
+<div id="ps-main">
+
+{* *}
+<!--optional navigation block-->
+<div id="ps-main-column">
+	{include file='menu.html'}
+</div>
+
+<!--content block-->
+<div id="ps-main-content">
+
+<form action="go.php" method="post">
+<div id="content">
+<h2><#Welcome to the PsychoStats Installer!#></h2>
+<p>
+	The installer will guide you through the setup process of installing PsychoStats {$local_ps_version} on your computer.
+	<strong>Javascript and cookies</strong> must be enabled in your browser for the installer to work properly.
+	<noscript>
+		<blockquote class="fatal"><p>You do not have javascript enabled!</p></blockquote>
+	</noscript>
+</p>
+
+{if $newer_avail}
+<div id="newer">
+	<h3><#Newer PsychoStats version is available!#></h3>
+	<p>
+		<b>PsychoStats version {$ps_version|escape} is available for download</b> (released on {$release_date}) and is newer than the version you are
+		about to install. You can download the newest version available by clicking the link:
+ 		[ <a href="{$newest_url}">Download PsychoStats v{$ps_version|escape}</a> ] and re-install.
+	</p>
+	<p>
+		Users are always encouraged to download and use the newest version available since new features and bug 
+		fixes are added into each release.
+	</p>
+	<p>
+		You can still continue with this installation if you wish.
+	</p>
+</div>
+{/if}
+
+{if $re}{* the install was botched, due to the install key changing for some reason *}
+<div id="bad-install">
+	<h3><#Installation Aborted!#></h3>
+	<p>
+		The installation was halted due to your session either timing out or another installation session was started! 
+		You must start over and try again. Be sure not to open a second installation window or it will fail again.
+	</p>
+</div>
+{/if}
+<p>
+	PsychoStats is open source software licensed as GPL. See the license below for full details.
+</p>
+<p class="gpl">{include file="license.txt" assign='gpl'}{$gpl|escape|nl2br}</p>
+<p>
+	<strong>When you're ready to begin click the "Install" button below. </strong>
+</p>
+<p class="controls">
+	<input value="Install" type="submit" />
+	<input name="s" value="analyze" type="hidden" />
+	<input name="install" value="{$install|escape}" type="hidden" />
+</p>
+</div>
+</form>
+
+</div> {* end ps-main-content *}
+
+</div> {* end ps-main *}
+
+</div> {* end ps-page-container *}
