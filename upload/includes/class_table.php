@@ -160,7 +160,7 @@ function rows() {
 function callback($html, $callback, $params = array()) {
 	$ret = false;
 	if (function_exists($callback) or is_array($callback)) {
-		$ret = call_user_func_array($callback, $params ? array($html, $params) : $html);
+		$ret = call_user_func_array($callback, $params ? array($html, $params) : array($html));
 	} elseif (strpos($callback, '%') !== false) {
 		$ret = sprintf($callback, $html);
 	}
