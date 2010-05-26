@@ -1,3 +1,15 @@
+
+
+--- WAKACHAMO ---
+
+* [Added] More Heatmaps (especially TF2)
+* [Added] Hardcoded regeneration of /tmp/ps_themes_compiled
+* [Fixed] function_exists() error
+* [Fixed] call_user_func_array() error
+* [Fixed] Deprecated-errors
+
+--- STORMTROOPER ---
+
 Version 3.1.1 (...)
 * Fixed halflife::parseprops to properly parse player names in event parameters 
 that have double quotes (") in their name.
