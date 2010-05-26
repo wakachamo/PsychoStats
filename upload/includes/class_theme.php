@@ -126,7 +126,7 @@ function PsychoTheme(&$cms, $args = array()) {
 	if ($this->theme_url === null) {
 		// if $base is '/' then don't use it, otherwise the theme_url will start with "//"
 		// and that will cause odd behavior as the client tries to do a network lookup for it
-		$base = dirname($_SERVER['SCRIPT_NAME']);
+		$base = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
 		$this->theme_url = ($base != '/' ? $base : '') . '/themes';
 	}
 
