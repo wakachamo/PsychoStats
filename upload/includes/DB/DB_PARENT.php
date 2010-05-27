@@ -364,11 +364,11 @@ function fatal($new=NULL) {
 }
 
 // reports a fatal error and DIE's
-function _fatal($msg,$force) {
+function _fatal($msg) {
 	$err = $msg;
 	$err .= "\n\n" . $this->errstr . "\n\n" . $msg;
 	$err .= "<hr>";
-	if ($this->fatal() OR $force) die(nl2br($err));
+	if ($this->fatal()) die(nl2br($err));
 }
 
 // returns the last error generated

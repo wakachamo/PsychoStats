@@ -49,6 +49,7 @@ function DB_mysql($conf=array()) {
 function connect($force_select = false) {
 	if (!function_exists('mysql_connect')) {
 		$this->error("Your installation of PHP v" . PHP_VERSION . " does not include MySQL support.");
+		$this->fatal(true);
 		$this->_fatal("Extension Error!");
 		return false;
 	}
