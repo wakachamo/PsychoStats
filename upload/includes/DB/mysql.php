@@ -27,6 +27,7 @@ define("SQL_IDENTIFIER_QUOTE_CHAR", '`');
 define("SQL_CATALOG_NAME_SEPARATOR", '.');
 
 class DB_mysql extends DB_PARENT {
+public $lastcmd = '';
 
 //function __construct($conf=array()) { return $this->DB_mysql($conf); }
 function DB_mysql($conf=array()) {
@@ -60,7 +61,8 @@ function connect($force_select = false) {
 	} else {
 		$this->error(@mysql_error());
 		$this->_fatal(sprintf("Error connecting to MySQL server '<b>%s</b>' (database '<b>%s</b>') using username '<b>%s</b>'", 
-			$host, $this->dbname, $this->dbuser)
+			$host, $this->dbname, $this->dbuser),
+			true
 		);
 	}
 
@@ -164,7 +166,8 @@ function truncate($tbl) {
 function error($e, $force = false) {
 	$e = trim($e);
 	if (!empty($e)) {
-		$this->errno = $this->dbh ? @mysql_errno($this->dbh) : @mysql_errno();
+		if(function_exists('mysql_query')) $this->errno = $this->dbh ? @mysql_errno($this->dbh) : @mysql_errno();
+		else $this->errno = 0;
 		$e = "ERR " . $this->errno . ": " . $e;
 	}
 	parent::error($e, $force);
