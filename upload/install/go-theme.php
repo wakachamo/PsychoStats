@@ -59,7 +59,10 @@ $errors = array();
 $can_write = false;
 $allow_next = false;
 $open_basedir = ini_get('open_basedir');
-$defaultdir = get_temp_dir() . DIRECTORY_SEPARATOR . 'ps_themes_compiled';
+
+$defaultdir = realpath(dirname(__FILE__).'/../temp/');
+if(!is_writable($defaultdir)) @chmod($default_temp,0755); //try to fix, but won't work in most cases due to insufficent privileges
+
 // Windows/IIS seems to have permission issues with creating and writting files to a sub-dir of windows\temp\...
 // so we'll default to the temp directory w/o an extra sub-directory for our themes.
 if (php_sapi_name() == 'isapi') $defaultdir = dirname($defaultdir);
