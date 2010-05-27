@@ -61,7 +61,8 @@ function connect($force_select = false) {
 	} else {
 		$this->error(@mysql_error());
 		$this->_fatal(sprintf("Error connecting to MySQL server '<b>%s</b>' (database '<b>%s</b>') using username '<b>%s</b>'", 
-			$host, $this->dbname, $this->dbuser)
+			$host, $this->dbname, $this->dbuser),
+			true
 		);
 	}
 
