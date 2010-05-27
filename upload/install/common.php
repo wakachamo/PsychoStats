@@ -32,8 +32,8 @@ define("PS_INSTALLDIR", dirname(__FILE__));
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED); 
 set_magic_quotes_runtime(0);
 /**/
-ini_set('display_errors', 'On');
-ini_set('log_errors', 'On');
+@ini_set('display_errors', 'On');
+@ini_set('log_errors', 'On');
 /**/
 
 // IIS does not have REQUEST_URI defined (apache specific).
