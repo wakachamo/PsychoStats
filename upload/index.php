@@ -1,5 +1,4 @@
 <?php
-if(!is_dir('/tmp/ps_themes_compiled')) mkdir("/tmp/ps_themes_compiled", 0777);
 /**
  *	This file is part of PsychoStats.
  *
