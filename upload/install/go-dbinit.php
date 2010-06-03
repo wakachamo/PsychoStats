@@ -155,7 +155,11 @@ function do_init($games, $mods) {
 	// load our SQL schema 
 	$schema = load_schema($db->type() . "/basic.sql");
 	if (!$schema) $errors[] = "Unable to read basic database schema for installation!";
-
+	
+	//load our Maxmind database
+	$schema = load_schema($db->type() . "/maxmind.sql");
+	if(!$schema) $errors[] = "Unable to read Maxmind GeoIP database for installation!";
+	
 	// load our SQL defaults
 	$defaults = load_schema($db->type() . "/defaults.sql");
 	if (!$defaults) $errors[] = "Unable to read database defaults for installation!";
