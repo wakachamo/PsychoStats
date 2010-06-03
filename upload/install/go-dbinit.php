@@ -155,10 +155,14 @@ function do_init($games, $mods) {
 	// load our SQL schema 
 	$schema = load_schema($db->type() . "/basic.sql");
 	if (!$schema) $errors[] = "Unable to read basic database schema for installation!";
-
+	
 	// load our SQL defaults
 	$defaults = load_schema($db->type() . "/defaults.sql");
 	if (!$defaults) $errors[] = "Unable to read database defaults for installation!";
+
+	//load our Maxmind database
+	$maxmind = load_schema($db->type() . "/maxmind.sql");
+	if(!$maxmind) $errors[] = "Unable to read Maxmind GeoIP database for installation!";
 
 	// load the modtype defaults, if avaialble
 	// bug: the same modtype from different games will be loaded... not an issue right now though.
@@ -169,7 +173,7 @@ function do_init($games, $mods) {
 		}
 	}
 	if ($errors) return false;
-
+	
 	// recreate DB if needed
 	if ($dropdb || !$db->dbexists($db->dbname)) {
 		$exists = array();
@@ -185,7 +189,7 @@ function do_init($games, $mods) {
 		}
 	}
 	if ($errors) return false;
-	$queries = array_merge($schema, $defaults);
+	$queries = array_merge($schema, $defaults,$maxmind);
 
 	$allow_next = true;
 	foreach ($queries as $sql) {
