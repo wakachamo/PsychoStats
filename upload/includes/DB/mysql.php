@@ -134,8 +134,12 @@ function server_info() {
 }
 
 function dbexists($dbname) {
-	$list = $this->fetch_list("SHOW DATABASES");
-	return in_array($dbname, $list);
+	//Unreliable in some cases (OVH-hosted)
+	//$list = $this->fetch_list("SHOW DATABASES");
+	//return in_array($dbname, $list);
+	$this->query("SELECT IF(EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '".$dbname."'), 'yes','no') AS db_exists");
+	$status = $this->fetch_row();
+	return ($status['db_exists']=='yes')?true:false;
 }
 
 function table_columns($tbl) {
