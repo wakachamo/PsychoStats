@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<theme>
+	<name>six</name>
+	<parent></parent>
+	<version>1.0</version>
+	<title>default cs.six.lt theme</title>
+	<author>Andrius Bentkus</author>
+	<website>http://cs.six.lt/</website>
+	<source>http://updates.psychostats.com/themes/default.xml</source>
+	<image>http://updates.psychostats.com/themes/default.png</image>
+	<file>http://updates.psychostats.com/themes/default.zip</file>
+	<description>This is the default theme for the cs.six.lt stats pages.</description>
+</theme>
