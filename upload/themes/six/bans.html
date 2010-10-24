@@ -1,0 +1,30 @@
+<!--outermost page container for all content-->
+<div id="ps-page-container">
+
+<!--inner container for the content-->
+<div id="ps-main">
+
+<!--content block-->
+<div id="ps-main-content" class="ps-page-downloads">
+	<div id="ps-page-title">
+		<div class="inner">
+		<h1><#Bans#></h1>
+		<h2><strong>{$bancount|commify}</strong> <#Players have been banned#></h2>
+		</div>
+	</div>
+
+	<div class="ps-table-frame no-ani">
+	<div class="ps-table-header">{$pager}</div>
+	<div class="ps-table-inner">
+	{$ban_table}
+	</div>
+	{if $pager}<div class="ps-table-footer">{$pager}</div>{/if}
+	</div>
+
+</div> {* end ps-main-content *}
+
+</div> {* end ps-main *}
+
+</div> {* end ps-page-container *}
+
+
