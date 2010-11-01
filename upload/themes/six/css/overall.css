@@ -64,6 +64,9 @@ acronym {
 }
 
 #ps-overall-right {
+  background: url(../img/star.png) no-repeat;
+  height: 180px;
+  width: 160px;
 	float: right;
 }
 
