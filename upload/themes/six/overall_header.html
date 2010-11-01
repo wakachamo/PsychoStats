@@ -66,6 +66,7 @@
     <ul id="menu" class="sf-menu clearfix">
 {if $conf.main.site_url}
     <li class="first"><a href="{$conf.main.site_url|escape}" title="<#Go to#> {$conf.main.site_url|escape}"><#Home#></a></li>
+    <li><a href="{url _base='wikis'}">Wiki</a></li>
     <li><a href="{url _base='players.php'}"><#Players#></a></li>
 {else}
     <li class="first"><a href="{url _base='players.php'}"><#Players#></a></li>
