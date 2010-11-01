@@ -55,7 +55,7 @@
 {foreach name='plrs' from=$server.players item='p'}
 	<tr{cycle values=", class='even'"}>
 		<td>{$smarty.foreach.plrs.iteration}</td>
-		<td class="name"><a href="{url _base='index.php' q=$p.name}">{$p.name|escape}</a></td>
+		<td class="name"><a href="{url _base='players.php' q=$p.name}">{$p.name|escape}</a></td>
 		<td class="kills">{$p.kills}</td>
 		<td class="time">{$p.onlinetime|compacttime}</td>
 	</tr>

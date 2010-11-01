@@ -18,7 +18,7 @@
 	<#Thank you for registering your player#>
 	<a href="{url _base='player.php' id=$plr.plrid}"><b>{$plr.name|escape}</b></a>{if $plr.rank} (rank {$plr.rank|commify}){/if}
 {if $conf.main.site_name}
-	<#on#> <b><a href="{if $conf.main.site_url}{$conf.main.site_url|escape}{else}{url _base='index.php'}{/if}">{$conf.main.site_name|escape}</a></b>!
+	<#on#> <b><a href="{if $conf.main.site_url}{$conf.main.site_url|escape}{else}{url _base='players.php'}{/if}">{$conf.main.site_name|escape}</a></b>!
 {/if}
 </p>
 <p>&nbsp;</p>
@@ -42,7 +42,7 @@
 </p>
 <p>&nbsp;</p>
 <p>
-	<#Please feel free to browse the <a href="{url _base='index.php'}">player statistics</a> now.#>
+	<#Please feel free to browse the <a href="{url _base='players.php'}">player statistics</a> now.#>
 </p>
 </fieldset>
 </form>
