@@ -37,7 +37,7 @@ $v = strtolower($v);
 $sort = trim(strtolower($sort));
 $order = trim(strtolower($order));
 $start = 0;
-$limit = 100;
+$limit = 500;
 if (!preg_match('/^\w+$/', $sort)) $sort = $DEFAULT_SORT;
 if (!in_array($order, array('asc','desc'))) $order = 'desc';
 
