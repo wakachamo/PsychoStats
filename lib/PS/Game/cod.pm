@@ -367,9 +367,11 @@ sub event_cod_shutdown {
 
 sub event_attacked {
 	my ($self, $timestamp, $args) = @_;
-	my ($killer, $victim, $weapon, $dmg, $type, $hitgroup) = @$args;
+	my ($victim, $killer, $weapon, $dmg, $type, $hitgroup) = @$args;
 	my $p1 = $self->get_plr($killer) || return;
 	my $p2 = $self->get_plr($victim) || return;
+
+	my $melee = "MOD_MELEE";
 
 	$p1->{basic}{lasttime} = $timestamp;
 	$p2->{basic}{lasttime} = $timestamp;
@@ -379,15 +381,22 @@ sub event_attacked {
 
 	my $r1 = $self->get_role($p1->{role}, $p1->{team});
 	my $w = $self->get_weapon($weapon);
-
+	if ($type eq $melee) {
+		#print " KNIFE DETECTED \n";
+		$type = "knife";
+		my $w = $self->get_weapon($type);
+	}
 	$self->_record_shot($hitgroup, $dmg, $p1, $r1, $w);
 }
 
+#### REVISED TO TRACK KNIFE KILLS.  COD USES KNIFE ONLY AS A DAMAGE TYPE, FOR THE CARRIED WEAPON
+#### THIS SHOULD SUBSTITUTE KNIFE FOR THE CARRIED WEAPON, TO RECORD THE KILL.  [CDN] NIGHTWARE 2012.
 sub event_kill {
 	my ($self, $timestamp, $args) = @_;
-	my ($killer, $victim, $weapon, $dmg, $type, $hitgroup) = @$args;
+	my ($victim, $killer, $weapon, $dmg, $type, $hitgroup) = @$args;
 	my $p1 = $self->get_plr($killer) || return;
 	my $p2 = $self->get_plr($victim) || return;
+	my $melee = "MOD_MELEE";
 
 	$p1->{basic}{lasttime} = $timestamp;
 	$p2->{basic}{lasttime} = $timestamp;
@@ -399,6 +408,12 @@ sub event_kill {
 	my $r1 = $self->get_role($p1->{role}, $p1->{team});
 	my $r2 = $self->get_role($p2->{role}, $p2->{team});
 	my $w = $self->get_weapon($weapon);
+	if ($type eq $melee) {
+		$type = "knife";
+		$w = $self->get_weapon($type);
+		#print "knife kill\n";
+	}
+	#print "Kill  w is:$w->{weaponid}:$w->{uniqueid};\n";	
 
 	# I directly access the player variables in the objects (bad OO design), 
 	# but the speed advantage is too great to do it the "proper" way.
