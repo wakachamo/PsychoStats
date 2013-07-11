@@ -29,7 +29,6 @@ $cms->theme->assign('page', basename(__FILE__, '.php'));
 
 $_GET['ref'] = htmlspecialchars($_GET['ref']); //XSS Fix. Thanks to JS2007
 $validfields = array('submit','cancel','ref');
-$validfields = preg_replace('|[^0-9.:]|', '', $validfields); //Another XSS fix.
 $cms->theme->assign_request_vars($validfields, true);
 
 if ($cancel) {
