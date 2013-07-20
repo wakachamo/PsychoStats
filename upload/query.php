@@ -36,6 +36,7 @@ $rulefilters = array('_tutor_','coop','deathmatch','pausable','r_');
 
 if (!in_array($t,array('details','players','rules','rcon'))) $t = 'details';
 
+$s = preg_replace('|[^0-9.:]|', '', $s);
 list($host,$port) = explode(':', $s);
 if (empty($port) or !is_numeric($port) or $port < 1 or $port > 65535) $port = 27015;
 
